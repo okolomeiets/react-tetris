@@ -1,0 +1,22 @@
+.arrows {
+  margin-top: 25px;
+}
+
+.arrows button {
+  background: var(--button);
+  border: none;
+  box-shadow: none;
+  color: var(--button-text);
+  margin: 0 5px;
+  padding: 10px 25px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.arrows-wrapper {
+  display: flex;
+  justify-content: center;
+}
+.arrow-bottom {
+  text-align: center;
+}

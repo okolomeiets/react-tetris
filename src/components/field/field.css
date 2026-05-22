@@ -1,0 +1,74 @@
+.field {
+  border: solid 1px var(--border);
+  display: inline-block;
+  position: relative;
+  box-shadow: 0px 0px 15px 15px #181818;
+}
+.board {
+  border: solid 1px #686868;
+  padding: 4px;
+}
+.row {
+  display: flex;
+}
+
+.cell {
+  width: 25px;
+  height: 25px;
+  border: solid 1px var(--border);
+  text-align: center;
+  line-height: 25px;
+  font-size: 0;
+}
+
+.cell.filld {
+  background: #919191;
+}
+
+.cell.for-remove {
+  background: #aae17d;
+}
+
+.pause-buttons {
+  padding: 25px 0;
+}
+
+.next-shape {
+  width: 110px;
+  height: 110px;
+}
+
+.game-header {
+  text-align: center;
+  padding-top: 25px;
+  height: 150px;
+}
+
+.field-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.next-shape-wrapper {
+  position: absolute;
+  left: -120px;
+  top: 0;
+}
+.game-over-wrapper {
+  padding-bottom: 15px;
+}
+
+.game button {
+  margin: 0 5px;
+  background: #353535;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  color: #919191;
+  border: solid 1px #474747;
+}
+
+.game button:hover {
+  background: #474747;
+}
