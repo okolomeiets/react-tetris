@@ -72,3 +72,9 @@
 .game button:hover {
   background: #474747;
 }
+
+@media (max-width: 400px) {
+  .next-shape-wrapper {
+    display: none;
+  }
+}
