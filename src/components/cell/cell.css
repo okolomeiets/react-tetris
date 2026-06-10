@@ -1,0 +1,16 @@
+.cell {
+  width: 25px;
+  height: 25px;
+  border: solid 1px var(--border);
+  text-align: center;
+  line-height: 25px;
+  font-size: 0;
+}
+
+.cell.filled {
+  background: #919191;
+}
+
+.cell.for-remove {
+  background: #aae17d;
+}

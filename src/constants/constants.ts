@@ -9,6 +9,11 @@ export const allShapes = {
     [1, 0],
     [1, 1],
   ],
+  reverseLShape: [
+    [0, 1],
+    [0, 1],
+    [1, 1],
+  ],
   zShape: [
     [1, 1, 0],
     [0, 1, 1],
@@ -19,24 +24,9 @@ export const allShapes = {
   ],
 };
 
-export const shape = ['square', 'stick', 'lShape', 'zShape', 'tShape'] as const;
+export const shape = Object.keys(allShapes) as (keyof typeof allShapes)[];
 
 export const initialState = {
   x: 4,
   y: 0,
-};
-
-export const createEmptyBoard = () => {
-  const field: number[][] = [];
-
-  for (let i = 0; i < 20; i++) {
-    const row: number[] = [];
-    field.push(row);
-    for (let j = 0; j < 10; j++) {
-      const cell: number = 0;
-      field[i].push(cell);
-    }
-  }
-
-  return field;
 };
