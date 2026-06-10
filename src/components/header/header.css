@@ -1,8 +1,62 @@
 .game-header {
-  text-align: center;
-  padding-top: 25px;
-  height: 150px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto 15px auto;
+  padding: 10px 16px;
+  background: rgba(22, 27, 37, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
 }
+
+.game-header > div:first-child {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  font-size: 1rem;
+  color: #00fff0;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 10px rgba(0, 255, 240, 0.4);
+  text-transform: uppercase;
+}
+
 .pause-buttons {
-  padding: 25px 0;
+  display: flex;
+  gap: 8px;
+}
+
+.pause-buttons button {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  outline: none;
+  background: transparent;
+  transition: all 0.2s ease-in-out;
+
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.pause-buttons button:first-child {
+  color: #ff9f43;
+  border: 1px solid rgba(255, 159, 67, 0.4);
+}
+
+.pause-buttons button:last-child {
+  color: #2ed573;
+  border: 1px solid rgba(46, 213, 115, 0.4);
+}
+
+@media (max-width: 480px) {
+  .game-header {
+    border-radius: 0 0 10px 10px;
+  }
 }

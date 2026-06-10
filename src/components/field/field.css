@@ -14,17 +14,3 @@
 .game-over-wrapper {
   padding-bottom: 15px;
 }
-
-.game button {
-  margin: 0 5px;
-  background: #353535;
-  border: none;
-  padding: 10px;
-  border-radius: 5px;
-  color: #919191;
-  border: solid 1px #474747;
-}
-
-.game button:hover {
-  background: #474747;
-}

@@ -1,36 +1,64 @@
-import './Arrows.css';
-import { memo } from 'react';
+import './arrows.css';
 
-type ArrowsProps = {
-  moveButtom: () => void;
+interface ArrowsProps {
+  startMoveDown: () => void;
+  stopMoveDown: () => void;
   moveLeft: () => void;
   rotate: () => void;
   moveRight: () => void;
-};
+  disabled: boolean;
+}
 
-const Arrows = memo(
-  ({ moveButtom, moveLeft, rotate, moveRight }: ArrowsProps) => {
-    return (
+export default function Arrows({
+  startMoveDown,
+  stopMoveDown,
+  moveLeft,
+  rotate,
+  moveRight,
+  disabled,
+}: ArrowsProps) {
+  return (
+    <div className="arrows">
       <div className="arrows-wrapper">
-        <div className="arrows">
-          <button onClick={moveLeft} tabIndex={-1}>
-            &#8592;
-          </button>
-          <button onClick={rotate} tabIndex={-1}>
-            &#8593;
-          </button>
-          <button onClick={moveRight} tabIndex={-1}>
-            &#8594;
-          </button>
-          <div className="arrow-bottom">
-            <button onClick={moveButtom} tabIndex={-1}>
-              &#8595;
-            </button>
-          </div>
-        </div>
+        <button
+          type="button"
+          onClick={moveLeft}
+          onContextMenu={(event) => event.preventDefault()}
+          disabled={disabled}
+        >
+          ←
+        </button>
+        <button
+          type="button"
+          onClick={rotate}
+          onContextMenu={(event) => event.preventDefault()}
+          disabled={disabled}
+        >
+          ↻
+        </button>
+        <button
+          type="button"
+          onClick={moveRight}
+          onContextMenu={(event) => event.preventDefault()}
+          disabled={disabled}
+        >
+          →
+        </button>
       </div>
-    );
-  },
-);
 
-export default Arrows;
+      <div className="arrow-bottom">
+        <button
+          type="button"
+          onPointerDown={startMoveDown}
+          onPointerUp={stopMoveDown}
+          onPointerLeave={stopMoveDown}
+          onPointerCancel={stopMoveDown}
+          onContextMenu={(event) => event.preventDefault()}
+          disabled={disabled}
+        >
+          ↓
+        </button>
+      </div>
+    </div>
+  );
+}
