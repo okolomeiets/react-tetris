@@ -1,4 +1,4 @@
-import './arrows.css';
+import './Arrows.css';
 
 interface ArrowsProps {
   startMoveDown: () => void;
