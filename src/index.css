@@ -46,6 +46,14 @@ body {
 
 #root {
   min-height: 100vh;
+  background: url('./assets/bg.png') 50% 50% no-repeat;
+  background-size: contain;
+}
+
+@media (max-width: 480px) {
+  #root {
+    background-size: cover;
+  }
 }
 
 h1,
