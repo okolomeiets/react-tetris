@@ -43,7 +43,7 @@
 .game-over-popup__container::before {
   content: '';
   position: absolute;
-  inset: 8px;
+  inset: 4px;
   border: 1px solid rgba(110, 245, 255, 0.18);
   border-radius: 18px;
   pointer-events: none;
@@ -75,7 +75,7 @@
   padding-top: 8px;
   color: #f3bc76;
   font-size: 34px;
-  font-weight: 900;
+  font-weight: 600;
   line-height: 1;
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -88,7 +88,8 @@
 .game-over-popup__score-card {
   position: relative;
   z-index: 1;
-  width: 100%;
+  width: auto;
+  max-width: 100%;
   padding: 18px 16px;
   display: flex;
   flex-direction: column;
@@ -119,12 +120,17 @@
 .game-over-popup__score-value {
   color: #63fff8;
   font-size: 42px;
-  font-weight: 900;
+  font-weight: 600;
   line-height: 1;
   text-shadow:
     0 0 4px rgba(99, 255, 248, 1),
     0 0 12px rgba(99, 255, 248, 0.78),
     0 0 28px rgba(99, 255, 248, 0.42);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100%;
+  text-align: center;
 }
 
 .game-over-popup__button {
@@ -133,7 +139,7 @@
   z-index: 1;
   isolation: isolate;
   min-width: 150px;
-  height: 42px;
+  height: 50px;
   padding: 0 22px;
   display: inline-flex;
   align-items: center;
@@ -150,7 +156,7 @@
 
   color: #95ffff;
   font-size: 15px;
-  font-weight: 900;
+  font-weight: 600;
   line-height: 1;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -188,7 +194,7 @@
 .game-over-popup__button::after {
   content: '';
   position: absolute;
-  inset: 6px 8px 7px;
+  inset: 3px 3px 3px;
   border: 1px solid currentColor;
   border-radius: 7px;
   opacity: 0.48;

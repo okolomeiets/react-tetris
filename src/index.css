@@ -92,3 +92,9 @@ h2 {
 p {
   margin: 0;
 }
+
+.board,
+.row,
+.cell {
+  pointer-events: none;
+}

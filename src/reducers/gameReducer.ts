@@ -41,31 +41,68 @@ export const initialGameState: GameState = {
   paused: false,
 };
 
+const moveShapeDown = (state: GameState): GameState => {
+  const canMoveDown = !hasCollision(
+    state.board,
+    state.startPostion.x,
+    state.startPostion.y + 1,
+    state.currentShape,
+  );
+
+  if (canMoveDown) {
+    return {
+      ...state,
+      startPostion: {
+        ...state.startPostion,
+        y: state.startPostion.y + 1,
+      },
+    };
+  }
+
+  const field = mergeShapeWithBoard(
+    state.board,
+    state.currentShape,
+    state.startPostion,
+  );
+
+  const { board: newBoard, removedRows } = clearLines(field);
+
+  const newScore = state.score + removedRows * 100;
+
+  const isGameOver = hasCollision(
+    newBoard,
+    initialState.x,
+    initialState.y,
+    state.nextShape,
+  );
+
+  if (isGameOver) {
+    return {
+      ...state,
+      board: newBoard,
+      score: newScore,
+      isGameOver: true,
+    };
+  }
+
+  return {
+    ...state,
+    board: newBoard,
+    score: newScore,
+    startPostion: initialState,
+    currentShape: state.nextShape,
+    nextShape: getRandomShape(),
+  };
+};
+
 export const gameReducer = (
   state: GameState,
   action: GameAction,
 ): GameState => {
   switch (action.type) {
-    case 'MOVE_DOWN': {
-      const canMoveDown = !hasCollision(
-        state.board,
-        state.startPostion.x,
-        state.startPostion.y + 1,
-        state.currentShape,
-      );
-
-      if (!canMoveDown) {
-        return state;
-      }
-
-      return {
-        ...state,
-        startPostion: {
-          ...state.startPostion,
-          y: state.startPostion.y + 1,
-        },
-      };
-    }
+    case 'MOVE_DOWN':
+    case 'TICK':
+      return moveShapeDown(state);
 
     case 'MOVE_LEFT': {
       const canMoveLeft = !hasCollision(
@@ -123,69 +160,23 @@ export const gameReducer = (
       };
     }
 
-    case 'TICK': {
-      const canMoveDown = !hasCollision(
-        state.board,
-        state.startPostion.x,
-        state.startPostion.y + 1,
-        state.currentShape,
-      );
+    case 'PAUSE': {
+      if (state.paused) return state;
 
-      if (canMoveDown) {
-        return {
-          ...state,
-          startPostion: {
-            ...state.startPostion,
-            y: state.startPostion.y + 1,
-          },
-        };
-      }
-
-      const field = mergeShapeWithBoard(
-        state.board,
-        state.currentShape,
-        state.startPostion,
-      );
-
-      const { board: newBoard, removedRows } = clearLines(field);
-
-      const isGameOver = hasCollision(
-        newBoard,
-        initialState.x,
-        initialState.y,
-        state.nextShape,
-      );
-
-      if (isGameOver) {
-        return {
-          ...state,
-          board: newBoard,
-          score: state.score + removedRows * 100,
-          isGameOver: true,
-        };
-      }
-
-      return {
-        ...state,
-        board: newBoard,
-        score: state.score + removedRows * 100,
-        startPostion: initialState,
-        currentShape: state.nextShape,
-        nextShape: getRandomShape(),
-      };
-    }
-
-    case 'PAUSE':
       return {
         ...state,
         paused: true,
       };
+    }
 
-    case 'RESUME':
+    case 'RESUME': {
+      if (!state.paused) return state;
+
       return {
         ...state,
         paused: false,
       };
+    }
 
     case 'START_NEW_GAME':
       return {

@@ -10,9 +10,7 @@ const Cell = memo(({ cell, isRowFilled }: CellProps) => {
   return (
     <div
       className={`cell ${cell === 1 ? 'filled' : ''} ${isRowFilled ? 'for-remove' : ''}`}
-    >
-      {cell}
-    </div>
+    />
   );
 });
 

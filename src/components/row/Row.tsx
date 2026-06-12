@@ -1,4 +1,4 @@
-import { memo, useMemo } from 'react';
+import { memo } from 'react';
 import Cell from '../cell/Cell';
 import './row.css';
 
@@ -7,9 +7,7 @@ type RowProps = {
 };
 
 const Row = memo(({ row }: RowProps) => {
-  const isRowFilled = useMemo(() => {
-    return row.every((item) => item === 1);
-  }, [row]);
+  const isRowFilled = row.every((item) => item === 1);
 
   return (
     <div className="row">
