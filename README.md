@@ -1,73 +1,148 @@
-# React + TypeScript + Vite
+# React Tetris
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A browser-based Tetris game built with **React**, **TypeScript**, and **Vite**.
 
-Currently, two official plugins are available:
+The project was created as a learning pet project to practice React state management, game logic, keyboard controls, performance optimization, and component-based UI architecture.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Demo
 
-## React Compiler
+Live demo: https://react-tetris-hazel.vercel.app/
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Screenshot
 
-## Expanding the ESLint configuration
+![React Tetris screenshot](./public/screenshot.png)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Features
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Classic Tetris-style gameplay
+- Falling tetromino shapes
+- Keyboard controls
+- On-screen control buttons
+- Shape rotation
+- Collision detection
+- Line clearing
+- Score tracking
+- Next shape preview
+- Pause and resume functionality
+- Game over state
+- New game restart
+- Responsive game layout
+- Futuristic sci-fi inspired UI
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Controls
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+| Key         | Action           |
+| ----------- | ---------------- |
+| Arrow Left  | Move shape left  |
+| Arrow Right | Move shape right |
+| Arrow Down  | Move shape down  |
+| Arrow Up    | Rotate shape     |
+
+The game also includes on-screen buttons for movement and rotation.
+
+## Tech Stack
+
+- React
+- TypeScript
+- Vite
+- CSS
+- React Hooks
+- `useReducer`
+- `useMemo`
+- `useCallback`
+- `React.memo`
+
+## Project Structure
+
+```txt
+src/
+├── components/
+│   ├── arrows/
+│   ├── board/
+│   ├── cell/
+│   ├── field/
+│   ├── footer/
+│   ├── header/
+│   ├── next-shape/
+│   ├── popup/
+│   └── row/
+├── constants/
+├── reducers/
+│   └── gameReducer.ts
+├── utils/
+│   └── gameUtils.ts
+└── App.tsx
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Game Logic
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+The game state is managed with `useReducer`.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+The reducer handles:
+
+- automatic falling with `TICK`
+- moving left and right
+- moving down
+- rotating shapes
+- pausing and resuming the game
+- starting a new game
+- fixing the current shape on the board
+- clearing completed rows
+- updating the score
+- detecting game over
+
+Collision detection prevents shapes from moving outside the board or overlapping with already placed blocks.
+
+## Performance Notes
+
+The project uses several React optimization techniques:
+
+- `useMemo` for merging the current shape with the board
+- `useCallback` for stable event handlers
+- `React.memo` for presentational components
+- reducer logic returns the same state object when no movement is possible, avoiding unnecessary state updates
+
+The project was also checked with Chrome DevTools Performance tools to analyze rendering, scripting, and painting behavior.
+
+## Getting Started
+
+Install dependencies:
+
+```bash
+npm install
 ```
+
+Run the development server:
+
+```bash
+npm run dev
+```
+
+Build the project:
+
+```bash
+npm run build
+```
+
+Preview the production build:
+
+```bash
+npm run preview
+```
+
+## What I Practiced
+
+While building this project, I practiced:
+
+- managing complex state with `useReducer`
+- separating game logic from UI components
+- working with two-dimensional arrays
+- implementing collision detection
+- handling keyboard events
+- optimizing React rendering
+- structuring a React + TypeScript project
+- deploying a frontend project to Vercel
+
+## Author
+
+Created by Olha Kolomeiets.
