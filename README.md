@@ -10,7 +10,7 @@ Live demo: https://react-tetris-hazel.vercel.app/
 
 ## Screenshot
 
-![React Tetris screenshot](./public/screenshot.png)
+![React Tetris screenshot](./public/react-tetris-preview.png)
 
 ## Features
 
