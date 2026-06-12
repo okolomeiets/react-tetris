@@ -7,6 +7,7 @@ import Board from '../board/Board';
 import { gameReducer, initialGameState } from '../../reducers/gameReducer';
 import { mergeShapeWithBoard } from '../../utils/gameUtils';
 import GameOverPopup from '../popup/popup';
+import Footer from '../footer/Footer';
 
 export default function Field() {
   const [gameState, dispatch] = useReducer(gameReducer, initialGameState);
@@ -169,6 +170,7 @@ export default function Field() {
         finalScore={score}
         onNewGame={handleOnStartNewGame}
       />
+      <Footer />
     </div>
   );
 }

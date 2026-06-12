@@ -1,0 +1,14 @@
+.game-footer {
+  width: 100%;
+  text-align: center;
+  display: block;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #5b5b5b;
+}
+
+.game-footer__link {
+  color: #5b5b5b;
+
+  font-weight: 500;
+}

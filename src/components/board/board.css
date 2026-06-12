@@ -1,4 +1,51 @@
 .board {
-  border: solid 1px #686868;
-  padding: 4px;
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  background: linear-gradient(
+    180deg,
+    #4d6671 0%,
+    #233a45 12%,
+    #0b171f 48%,
+    #05090d 100%
+  );
+  border: 1px solid rgba(130, 230, 240, 0.42);
+  border-radius: 18px;
+  box-shadow:
+    0 0 0 3px rgba(0, 0, 0, 0.82),
+    0 14px 30px rgba(0, 0, 0, 0.78),
+    0 0 28px rgba(99, 255, 248, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -18px 24px rgba(0, 0, 0, 0.58);
+}
+
+.board::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(120, 245, 255, 0.22);
+  border-radius: 13px;
+  pointer-events: none;
+  box-shadow:
+    inset 0 0 22px rgba(0, 0, 0, 0.82),
+    0 0 14px rgba(99, 255, 248, 0.1);
+}
+
+.board::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 7px;
+  width: 120px;
+  height: 3px;
+  transform: translateX(-50%);
+  background: #63fff8;
+  border-radius: 999px;
+  box-shadow:
+    0 0 8px rgba(99, 255, 248, 1),
+    0 0 18px rgba(99, 255, 248, 0.65),
+    0 0 32px rgba(99, 255, 248, 0.35);
+  pointer-events: none;
 }

@@ -1,15 +1,116 @@
 .next-shape-wrapper {
   position: absolute;
-  left: -120px;
-  top: 0;
+  z-index: 5;
+  height: 131px;
+  left: -188px;
+  width: 131px;
+  padding: 10px 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  color: #c7eef2;
+  background: linear-gradient(
+    180deg,
+    rgba(42, 65, 76, 0.98) 0%,
+    rgba(18, 34, 43, 0.98) 45%,
+    rgba(5, 12, 17, 1) 100%
+  );
+
+  border: 1px solid rgba(118, 190, 200, 0.42);
+  border-radius: 14px;
+  box-shadow:
+    0 0 0 2px rgba(0, 0, 0, 0.78),
+    0 8px 18px rgba(0, 0, 0, 0.65),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    inset 0 -10px 16px rgba(0, 0, 0, 0.45),
+    0 0 18px rgba(99, 255, 248, 0.1);
+}
+
+.next-shape-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border: 1px solid rgba(110, 245, 255, 0.16);
+  border-radius: 10px;
+  pointer-events: none;
+  box-shadow:
+    inset 0 0 14px rgba(0, 0, 0, 0.7),
+    0 0 8px rgba(99, 255, 248, 0.08);
+}
+
+.next-shape-wrapper::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 5px;
+  width: 44px;
+  height: 2px;
+  transform: translateX(-50%);
+  background: #63fff8;
+  border-radius: 999px;
+  box-shadow:
+    0 0 7px rgba(99, 255, 248, 1),
+    0 0 14px rgba(99, 255, 248, 0.55);
+}
+
+.next-shape-wrapper__label {
+  position: relative;
+  z-index: 1;
+  color: #c7eef2;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-shadow:
+    0 0 4px rgba(199, 238, 242, 0.55),
+    0 0 10px rgba(99, 255, 248, 0.22);
+  text-align: center;
 }
 
 .next-shape {
-  width: 110px;
-  height: 110px;
+  position: relative;
+  z-index: 1;
+  left: 15px;
+  width: fit-content;
+  min-width: 87px;
+  min-height: 87px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 6px;
+  background: linear-gradient(
+    180deg,
+    rgba(9, 19, 25, 0.96) 0%,
+    rgba(4, 10, 14, 0.98) 100%
+  );
+  border: 1px solid rgba(120, 170, 180, 0.35);
+  border-radius: 8px;
+  box-shadow:
+    inset 0 0 12px rgba(0, 0, 0, 0.8),
+    0 0 10px rgba(99, 255, 248, 0.08);
 }
 
-@media (max-width: 300px) {
+.next-shape__row {
+  display: flex;
+}
+
+.next-shape__cell {
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgba(170, 240, 245, 0.12);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.next-shape__cell--filled {
+  background: linear-gradient(135deg, #b7d7dc 0%, #7f9fa7 35%, #425b63 100%);
+  border-color: rgba(210, 250, 255, 0.45);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -4px 6px rgba(0, 0, 0, 0.38),
+    0 0 8px rgba(190, 245, 255, 0.32);
+}
+
+@media (min-width: 350px) and (max-width: 650px) {
   .next-shape-wrapper {
     display: none;
   }

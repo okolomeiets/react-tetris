@@ -46,8 +46,8 @@ body {
 
 #root {
   min-height: 100vh;
-  background: url('./assets/bg.png') 50% 50% no-repeat;
-  background-size: contain;
+  background: url('./assets/bg-board.png') 50% 50% no-repeat;
+  background-size: cover;
 }
 
 @media (max-width: 480px) {

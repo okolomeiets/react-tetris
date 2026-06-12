@@ -1,16 +1,105 @@
 .cell {
-  width: 25px;
-  height: 25px;
-  border: solid 1px var(--border);
-  text-align: center;
-  line-height: 25px;
+  position: relative;
+  width: 28px;
+  height: 28px;
   font-size: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(145, 230, 235, 0.14);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.035) 0%,
+    rgba(255, 255, 255, 0.012) 42%,
+    rgba(0, 0, 0, 0.22) 100%
+  );
+  box-shadow:
+    inset 0 0 7px rgba(0, 0, 0, 0.55),
+    inset 1px 1px 0 rgba(255, 255, 255, 0.03);
+  overflow: hidden;
+}
+
+.cell::before {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border: 1px solid rgba(120, 245, 255, 0.04);
+  pointer-events: none;
 }
 
 .cell.filled {
-  background: #919191;
+  border-color: rgba(220, 255, 255, 0.56);
+  background: linear-gradient(
+    135deg,
+    #e5fbff 0%,
+    #adcbd2 18%,
+    #5f7d87 46%,
+    #243944 78%,
+    #101b22 100%
+  );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.72),
+    inset 0 -7px 9px rgba(0, 0, 0, 0.48),
+    inset 1px 0 0 rgba(255, 255, 255, 0.18),
+    0 0 8px rgba(190, 250, 255, 0.36),
+    0 0 14px rgba(99, 255, 248, 0.14);
+}
+
+.cell.filled::before {
+  inset: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 2px;
+  box-shadow:
+    inset 0 0 6px rgba(255, 255, 255, 0.12),
+    0 0 5px rgba(220, 255, 255, 0.22);
+}
+
+.cell.filled::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 4px;
+  right: 4px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.68);
+  border-radius: 999px;
+  box-shadow:
+    0 0 5px rgba(255, 255, 255, 0.55),
+    0 0 10px rgba(180, 255, 255, 0.35);
 }
 
 .cell.for-remove {
-  background: #00fff0;
+  border-color: rgba(243, 188, 118, 0.9);
+  background: linear-gradient(
+    135deg,
+    #fff0c8 0%,
+    #f3bc76 24%,
+    #79552c 64%,
+    #17100a 100%
+  );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.65),
+    inset 0 -7px 9px rgba(0, 0, 0, 0.5),
+    0 0 10px rgba(243, 188, 118, 0.65),
+    0 0 22px rgba(243, 188, 118, 0.3);
+  animation: row-remove-pulse 0.45s ease-in-out infinite alternate;
+}
+
+@keyframes row-remove-pulse {
+  from {
+    filter: brightness(1);
+    transform: scale(1);
+  }
+
+  to {
+    filter: brightness(1.35);
+    transform: scale(1.04);
+  }
+}
+
+@media (min-width: 350px) and (max-width: 650px) {
+  .cell {
+    width: 25px;
+    height: 25px;
+  }
 }

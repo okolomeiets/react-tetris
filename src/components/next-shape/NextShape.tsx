@@ -8,14 +8,18 @@ type NextShapeProps = {
 const NextShape = memo(({ nextShape }: NextShapeProps) => {
   return (
     <div className="next-shape-wrapper">
-      Next:
+      <span className="next-shape-wrapper__label">Next:</span>
+
       <div className="next-shape">
-        {nextShape.map((row, index) => (
-          <div key={index} className="row">
-            {row.map((cell, index) => (
-              <div key={index} className={`cell ${cell === 1 ? 'filled' : ''}`}>
-                {cell}
-              </div>
+        {nextShape.map((row, rowIndex) => (
+          <div key={rowIndex} className="next-shape__row">
+            {row.map((cell, cellIndex) => (
+              <div
+                key={`${rowIndex}-${cellIndex}`}
+                className={`next-shape__cell ${
+                  cell === 1 ? 'next-shape__cell--filled' : ''
+                }`}
+              />
             ))}
           </div>
         ))}
